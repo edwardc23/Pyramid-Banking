@@ -34,7 +34,7 @@ public class LoginModel {
             this.id = id;
         }
 
-        public String getUserName() {
+        public String getUsername() {
             return userName;
         }
 
