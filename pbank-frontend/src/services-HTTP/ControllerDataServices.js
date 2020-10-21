@@ -13,13 +13,7 @@ class ControllerDataServices {
         return axios.get(`http://localhost:8080/grabAll`);
     }
 
-    getCard(id){
-        return axios.get(`http://localhost:8080/retrieveItem/${id}`);
-    }
 
-    getRandomCard(){
-        return axios.get(`http://localhost:8080/randomCard`);
-    }
 
     check(admin){ //for admin component**
         return axios.get(`http://localhost:8080/checkAdmin`,admin)
@@ -27,9 +21,6 @@ class ControllerDataServices {
     //__________________________________________________________________________
 
     //POST requests
-    addCard(card){
-        return axios.post(`http://localhost:8080/addCard`,card);
-    }
 
     addAdmin(admin){ //for admin component**
         return axios.post(`http://localhost:8080/addAdmin`,admin);
@@ -39,8 +30,6 @@ class ControllerDataServices {
     //_____________________________________________________________________________
 
     //DELETE requests
-    deleteCard(cardID){
-        return axios.delete(`http://localhost:8080/delete/${cardID}`)
-    }
+
 }
 export default new ControllerDataServices()
