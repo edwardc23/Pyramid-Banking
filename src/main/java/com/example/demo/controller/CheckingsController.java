@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/checkings")
 public class CheckingsController {
     private CheckingsService checkingsService;
 
@@ -15,23 +16,23 @@ public class CheckingsController {
         this.checkingsService = checkingsService;
     }
 
-    @PostMapping("/createCheckingAccount")
+    @PostMapping("/create")
     public CheckingsModel createCheckings(@RequestBody CheckingsModel checkingsModel){
         return this.checkingsService.save(checkingsModel);
     }
 
 
-    @GetMapping("/account/{id}")
+    @GetMapping("/{id}")
     public Optional<CheckingsModel> getCheckings(@PathVariable Long id){
         return this.checkingsService.findById(id);
     }
 
-    @GetMapping("/checkingAccounts")
+    @GetMapping("/accounts")
     public List<CheckingsModel> getAllCheckings(){
         return this.checkingsService.findAll();
     }
 
-    @PutMapping("checkings/updateAccount/{id}")
+    @PutMapping("/update/{id}")
     public String updateAccount(@PathVariable Long id, @RequestBody CheckingsModel updateAccount){
         if(this.checkingsService.findById(id).isPresent()){
 
@@ -43,7 +44,7 @@ public class CheckingsController {
         }
     }
 
-    @DeleteMapping("/checkings/deleteAccount/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteAccount(@PathVariable Long id){
         if(this.checkingsService.findById(id).isPresent()) {
             this.checkingsService.delete(id);
