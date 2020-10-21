@@ -22,7 +22,7 @@ public class LoginController {
         LoginModel item = loginService.saveAdmin(admin);
         return item;
     }
-    @PostMapping("/checkAdmin")
+    @GetMapping("/checkAdmin")
     public String checker(@RequestBody LoginModel admin)
     {
         if(loginService.checkAdmin(admin))
