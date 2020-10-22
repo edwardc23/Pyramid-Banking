@@ -2,13 +2,10 @@ package com.example.demo.service;
 
 import com.example.demo.model.LoginModel;
 import com.example.demo.repository.LoginRepository;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Random;
 
@@ -24,10 +21,14 @@ public class LoginService {
 
 
         @Transactional
-        public LoginModel saveAdmin(LoginModel admin) {
-            loginRepository.save(admin);
-
-            return admin;
+        public String saveAdmin(LoginModel admin) {
+            if(checkForUsername(admin.getUserName())) {
+                return "User already exists";
+            }
+            else {
+                loginRepository.save(admin);
+                return "User is being created";
+            }
         }
 
         public List<LoginModel> listInventory() {
@@ -43,17 +44,31 @@ public class LoginService {
 
 
         @Transactional
-        public boolean checkAdmin(LoginModel Admin) {
+        public boolean checkAdmin(LoginModel admin) {
+
 
             List<LoginModel> list = listInventory();
 
             for(LoginModel a :list)
             {
-                if(a.getUsername().equals(Admin.getUsername())){
-                    if (a.getPassword().equals(Admin.getPassword()))
+
+                if(a.getUserName().equals(admin.getUserName())){
+                    if (a.getPassword().equals(admin.getPassword()))
                     {
                         return true;
                     }
+                }
+            }
+            return false;
+        }
+
+        public boolean checkForUsername(String username){
+            List<LoginModel> list = listInventory();
+
+            for(LoginModel a :list)
+            {
+                if(a.getUserName().equals(username)){
+                        return true;
                 }
             }
             return false;

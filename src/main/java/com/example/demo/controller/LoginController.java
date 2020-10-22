@@ -18,11 +18,12 @@ public class LoginController {
 
 
     @PostMapping("/addAdmin")
-    public LoginModel createAdmin(@RequestBody LoginModel admin){
-        LoginModel item = loginService.saveAdmin(admin);
-        return item;
+    public void createAdmin(@RequestBody LoginModel admin){
+
+        loginService.saveAdmin(admin);
     }
-    @GetMapping("/checkAdmin")
+
+    @PostMapping("/checkAdmin")
     public String checker(@RequestBody LoginModel admin)
     {
         if(loginService.checkAdmin(admin))
