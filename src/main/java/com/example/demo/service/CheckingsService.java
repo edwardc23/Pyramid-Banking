@@ -42,4 +42,9 @@ public class CheckingsService {
     public void delete(Long id) {
         checkingsRepository.deleteById(id);
     }
+
+    public CheckingsModel findByAccountNumber(String accountNumber){
+
+        return checkingsRepository.findByAccountNumber(accountNumber);
+    }
 }

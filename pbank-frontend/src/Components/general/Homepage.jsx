@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import HeaderComponent from './HeaderComponent'
 import axios from "axios";
+import Checking from "./Checking";
 
 class Homepage extends Component{
     constructor(props) {
@@ -14,34 +15,59 @@ class Homepage extends Component{
                 full: '',
                 saving: '',
                 checking: ''
-            }
+            },
+            checking: {
+                accountNumber: '',
+                balance: 0,
+                name: ''
+            },
+            saving : {
+                accountNumber: '',
+                balance: 0,
+                name: ''
+            },
+            loaded: false
         }
 
     }
-    componentDidMount() {
-        this.findByUsername(this.state.username);
-        this.findByChecking(this.state.user.checking);
-        this.findBySaving(this.state.user.saving);
+
+
+     componentDidMount() {
+         this.findByUsername(this.state.username);
+        // setTimeout(()=> {
+        //      this.findByChecking(this.state.user.checking);
+        //      this.findBySaving(this.state.user.saving);
+        //
+        // },500);
 
     }
 
 
     findByUsername = (username) =>{
-        axios.post("http://localhost:8080/returnUser", {username}).then(r=> {
+        axios.post("http://localhost:8080/returnUser", {username}).then(res=> {
 
             return this.setState({user: {
-                    userName: r.data['userName'],
-                    password: r.data['password'],
-                    full: r.data['full'],
-                    saving: r.data['saving'],
-                    checking: r.data['checking']
+                    userName: res.data['userName'],
+                    password: res.data['password'],
+                    full: res.data['full'],
+                    saving: res.data['saving'],
+                    checking: res.data['checking']
                 }});
         });
 
     }
 
-    findByChecking = () =>{
+     findByChecking(checking) {
+         axios.post("http://localhost:8080/checkings/find", {checking}).then(res=> {
+            console.log("res: " + res.data);
+            return this.setState({checking :{
+                    accountNumber: res.data['accountNumber'],
+                    balance: res.data[''],
+                    name: res.data['']
+                }
 
+            })
+        })
     }
 
     findBySaving = () =>{
@@ -61,8 +87,10 @@ class Homepage extends Component{
                 <div className={"body-page"}>
                     <h2 style={{color: "white"}}>Name: {this.state.user.full}</h2>
                     <h2 style={{color: "white"}}>User: {this.state.user.userName}</h2>
-                    <h2 style={{color: "white"}}>Checking: {this.state.user.saving}</h2>
-                    <h2 style={{color: "white"}}>Saving: {this.state.user.checking}</h2>
+                    <h2 style={{color: "white"}}>Checking: {this.state.user.checking}</h2>
+                    <h2 style={{color: "white"}}>Saving: {this.state.user.saving}</h2>
+                    <br/>
+                    <Checking saving={this.state.user.saving} checking={this.state.user.checking} />
 
                 </div>
             </div>

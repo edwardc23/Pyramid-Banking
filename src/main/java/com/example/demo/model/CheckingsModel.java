@@ -11,8 +11,7 @@ public class CheckingsModel implements Account {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name="acct_number")
-
+    @Column(name="AcctNumber")
     private String accountNumber;
 
     @Column(name="full_name")
