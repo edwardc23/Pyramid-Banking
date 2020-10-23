@@ -1,30 +1,35 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.CheckingsModel;
+import com.example.demo.model.LoginModel;
+import com.example.demo.repository.LoginRepository;
 import com.example.demo.service.CheckingsService;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
-@CrossOrigin(origins = {"http://localhost:3000"})
+
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/checkings")
 public class CheckingsController {
     private final CheckingsService checkingsService;
+    private LoginRepository loginRepository;
 
-    public CheckingsController(CheckingsService checkingsService) {
+    public CheckingsController(CheckingsService checkingsService, LoginRepository loginRepository) {
         this.checkingsService = checkingsService;
+        this.loginRepository = loginRepository;
     }
 
     @PostMapping("/createChecking")
-    public CheckingsModel createCheckings(@RequestBody CheckingsModel checkingsModel){
-        if(checkingsModel.getAccountNumber().equals("Yes")){
-            Random rand = new Random();
-            String acctNum="483382610700"+new DecimalFormat("0000").format(String.valueOf(rand.nextInt(10000)));
+    public CheckingsModel createCheckings(@RequestBody CheckingsModel checkingsModel) throws InterruptedException {
+        Thread.sleep(5000);
+        LoginModel list = loginRepository.findAll().get(loginRepository.findAll().size()-1);
 
-            checkingsModel.setAccountNumber(acctNum);
+
+        if(checkingsModel.getAccountNumber().equals("Yes")){
+
+            checkingsModel.setAccountNumber(list.getChecking());
 
         }
         return this.checkingsService.save(checkingsModel);
