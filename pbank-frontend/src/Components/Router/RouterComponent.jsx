@@ -21,7 +21,7 @@ class RouterComponent extends Component{
                             <Route path="/Login" component={Login}/>
                             <Route path="/Register" component={Register}/>
                             <Route path="/Homepage" component={Homepage}/>
-                            <Route path="/Logout"component={Logout}/>
+                            <Route path="/Logout" component={Logout}/>
                         </Switch>
 
                     <FooterComponent />

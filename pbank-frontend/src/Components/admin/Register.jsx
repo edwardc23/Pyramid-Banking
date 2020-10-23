@@ -22,12 +22,13 @@ class Register extends Component{
             this.addAccounts = this.addAccounts.bind(this)
         
     }
-    testP(user)
+    testP(user,acct)
     {
         console.log(user)
             ControllerDataServices.addAdmin(user)
+            this.addAccounts(acct)
 
-            //this.props.history.push('/Homepage')
+            this.props.history.push('/Homepage')
     }
     addAccounts(acct){if(acct.savingAcct==="Yes"){ControllerDataServices.addSaving(acct)}
         if(acct.checkingAcct==="Yes"){ControllerDataServices.addChecking(acct)}}
@@ -83,8 +84,8 @@ class Register extends Component{
 
         event.preventDefault()
 
-        this.testP(user)
-        this.addAccounts(acct)
+        this.testP(user,acct)
+
     }
 render(){
     return(
