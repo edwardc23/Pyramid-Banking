@@ -21,7 +21,7 @@ class Login extends Component{
     testP(){
         if(this.state.test==='Success')
         {
-            this.props.history.push("/Homepage")
+            this.props.history.push(`/Homepage/${this.state.username}`)
 
         }
 
