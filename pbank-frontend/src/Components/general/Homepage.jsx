@@ -25,8 +25,9 @@ class Homepage extends Component{
 
     findByUsername = (username) =>{
 
-        axios.post("http://localhost:8080/returnUser", {username}).then(res => {
-            console.log(res.data);
+        axios.post("http://localhost:8080/returnUser", {username}).then(r=>{
+            console.log("r " + r.data)
+            this.state.user = r.data;
 
         });
         console.log(this.state.user);
