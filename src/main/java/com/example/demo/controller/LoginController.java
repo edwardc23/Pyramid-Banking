@@ -3,9 +3,11 @@ package com.example.demo.controller;
 import com.example.demo.Information;
 import com.example.demo.model.LoginModel;
 import com.example.demo.service.LoginService;
-import com.example.demo.service.SavingsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.text.DecimalFormat;
 import java.util.Random;
@@ -57,9 +59,10 @@ public class LoginController {
 
 
     }
-    @GetMapping("/returnUser")
+    @PostMapping("/returnUser")
     public LoginModel returnUser(@RequestBody String username)
     {
+
         return loginService.getAdmin(username);
 
     }
