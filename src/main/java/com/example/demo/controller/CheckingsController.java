@@ -21,7 +21,7 @@ public class CheckingsController {
         this.loginRepository = loginRepository;
     }
 
-    @PostMapping("/createChecking")
+    @PostMapping("/create")
     public CheckingsModel createCheckings(@RequestBody CheckingsModel checkingsModel) throws InterruptedException {
         Thread.sleep(5000);
         LoginModel list = loginRepository.findAll().get(loginRepository.findAll().size()-1);
@@ -36,12 +36,12 @@ public class CheckingsController {
     }
 
 
-    @GetMapping("/Checking/{id}")
+    @GetMapping("/{id}")
     public Optional<CheckingsModel> getCheckings(@PathVariable Long id){
         return this.checkingsService.findById(id);
     }
 
-    @GetMapping("Checking/accounts")
+    @GetMapping("/accounts")
     public List<CheckingsModel> getAllCheckings(){
         return this.checkingsService.findAll();
     }

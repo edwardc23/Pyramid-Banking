@@ -21,7 +21,7 @@ public class SavingsController {
         this.loginRepository = loginRepository;
     }
 
-    @PostMapping("/createSavings")
+    @PostMapping("/create")
     public SavingsModel createSavings(@RequestBody SavingsModel savingsModel) throws InterruptedException {
 
         Thread.sleep(5000);
