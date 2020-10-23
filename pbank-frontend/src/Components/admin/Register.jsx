@@ -4,31 +4,34 @@ import ControllerDataServices from '../../services-HTTP/ControllerDataServices'
 class Register extends Component{
     constructor (props){
         super(props)
-            this.state = {
-                username: '',
-                password: '',
-                savingAcct:'No',
-                checkingAcct:'No',
-                fullName: ''
+        this.state = {
+            username: '',
+            password: '',
+            savingAcct:'No',
+            checkingAcct:'No',
+            fullName: ''
 
-            }
-            this.handleUsernameChange = this.handleUsernameChange.bind(this)
-            this.handlePasswordChange = this.handlePasswordChange.bind(this)
-            this.handleFull = this.handleFull.bind(this)
-            this.handleSavingsChange = this.handleSavingsChange.bind(this)
-            this.handleCheckingChange = this.handleCheckingChange.bind(this)
-            this.handleSubmit = this.handleSubmit.bind(this)
-            this.testP = this.testP.bind(this)
-            this.addAccounts = this.addAccounts.bind(this)
-        
+        }
+        this.handleUsernameChange = this.handleUsernameChange.bind(this)
+        this.handlePasswordChange = this.handlePasswordChange.bind(this)
+        this.handleFull = this.handleFull.bind(this)
+        this.handleSavingsChange = this.handleSavingsChange.bind(this)
+        this.handleCheckingChange = this.handleCheckingChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.testP = this.testP.bind(this)
+        this.addAccounts = this.addAccounts.bind(this)
+
     }
     testP(user,acct)
     {
         console.log(user)
-            ControllerDataServices.addAdmin(user)
-            this.addAccounts(acct)
+        ControllerDataServices.addAdmin(user)
+        this.addAccounts(acct)
 
-            this.props.history.push('/Homepage')
+        this.props.history.push({
+            pathname: `/Homepage/${user.username}`,
+
+        })
     }
     addAccounts(acct){if(acct.savingAcct==="Yes"){ControllerDataServices.addSaving(acct)}
         if(acct.checkingAcct==="Yes"){ControllerDataServices.addChecking(acct)}}
@@ -36,12 +39,12 @@ class Register extends Component{
         this.setState({
             username: event.target.value
         })
-         //console.log(this.state.username)
+        //console.log(this.state.username)
     }
 
     handlePasswordChange(event) {
         this.setState({
-        password: event.target.value
+            password: event.target.value
         })
         // console.log(this.state.password)
     }
@@ -51,19 +54,19 @@ class Register extends Component{
         else{check1='No'}
         console.log(check1)
         this.setState({
-        savingAcct: check1
-    })
+            savingAcct: check1
+        })
     }
     handleCheckingChange(){
         let check=''
         if(this.state.savingAcct==='No'){ check='Yes'}
         else{check='No'}
         this.setState({
-        checkingAcct: check
-    })}
+            checkingAcct: check
+        })}
     handleFull(event) {
         this.setState({
-        fullName: event.target.value
+            fullName: event.target.value
         })
         // console.log(this.state.password)
     }
@@ -87,11 +90,11 @@ class Register extends Component{
         this.testP(user,acct)
 
     }
-render(){
-    return(
-        <div className={"register-page"}>
-            <form onSubmit= {this.handleSubmit}>
-               <p>Username:</p>
+    render(){
+        return(
+            <div className={"register-page"}>
+                <form onSubmit= {this.handleSubmit}>
+                    <p>Username:</p>
                     <input type="text" value={this.state.username} onChange={this.handleUsernameChange}/>
                     <br/>
                     <p>New Password:</p>
@@ -101,16 +104,19 @@ render(){
                     <input type="text" value={this.state.fullName} onChange={this.handleFull}/>
                     <br/>
 
-                <input type="checkbox"  id="checkingAcct" value="Yes" onClick={this.handleCheckingChange}/>
+                    <input type="checkbox"  id="checkingAcct" value="Yes" onClick={this.handleCheckingChange}/>
                     <label htmlFor="checking"> Checking Acct</label>
                     <br/>
 
-                <input type="checkbox" id="savingsAcct" value="Yes" onClick={this.handleSavingsChange} />
+                    <input type="checkbox" id="savingsAcct" value="Yes" onClick={this.handleSavingsChange} />
                     <label htmlFor="savings"> Savings Acct</label>
                     <br/>
                     <button>Submit</button>
-            </form>
-        </div>
-    )
-}
+                </form>
+            </div>
+        )
+    }
 }export default Register
+
+
+
