@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.Information;
 import com.example.demo.model.LoginModel;
 import com.example.demo.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +30,7 @@ public class LoginController {
             Random rand = new Random();
             String acctNum="723282610701"+new DecimalFormat("0000").format(rand.nextInt(10000));
             admin.setSaving(acctNum);
-            Information info=new Information();
-            info.setSavingAcct(acctNum);
+
 
         }
         if(admin.getChecking().equals("Yes")){
