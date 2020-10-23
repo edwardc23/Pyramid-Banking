@@ -9,12 +9,15 @@ import javax.persistence.*;
 public class CheckingsModel implements Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
     private long id;
+
     @Column(name="AcctNumber")
+
     private String accountNumber;
+
     @Column(name="FullName")
     private String name;
+
     @Column(name="Balance")
     private double balance;
 
@@ -61,8 +64,13 @@ public class CheckingsModel implements Account {
     }
 
     public String withdraw(Double amt) {
-        this.balance -= amt;
-        return "Balance: " + this.balance;
+        if(this.balance < amt){
+            return "Insufficient balance\n Balance:" + this.balance;
+        }
+        else {
+            this.balance -= amt;
+            return "Balance: " + this.balance;
+        }
     }
 
     public String deposit(Double amt) {

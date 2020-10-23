@@ -19,8 +19,10 @@ public class LoginModel {
         @Column(name="FullName")
         private String full;
 
+
         @Column(name="Saving")
         private String saving;
+
 
         @Column(name="Checking")
         private String checking;
