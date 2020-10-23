@@ -1,29 +1,35 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.LoginModel;
 import com.example.demo.model.SavingsModel;
+import com.example.demo.repository.LoginRepository;
 import com.example.demo.service.SavingsService;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 @CrossOrigin(origins = {"http://localhost:3000"})
 @RestController
 @RequestMapping("/savings")
 public class SavingsController {
-    private final SavingsService savingsService;
 
-    public SavingsController(SavingsService savingsService) {
+    private final SavingsService savingsService;
+    private LoginRepository loginRepository;
+
+    public SavingsController(SavingsService savingsService, LoginRepository loginRepository) {
         this.savingsService = savingsService;
+        this.loginRepository = loginRepository;
     }
 
     @PostMapping("/createSavings")
-    public SavingsModel createSavings(@RequestBody SavingsModel savingsModel){
+    public SavingsModel createSavings(@RequestBody SavingsModel savingsModel) throws InterruptedException {
+
+        Thread.sleep(5000);
+        LoginModel list = loginRepository.findAll().get(loginRepository.findAll().size()-1);
+
         if(savingsModel.getAccountNumber().equals("Yes")){
-            Random rand = new Random();
-            String acctNum="483382610700"+new DecimalFormat("0000").format(String.valueOf(rand.nextInt(10000)));
-            savingsModel.setAccountNumber(acctNum);
+
+            savingsModel.setAccountNumber(list.getSaving());
 
         }
         return this.savingsService.save(savingsModel);
