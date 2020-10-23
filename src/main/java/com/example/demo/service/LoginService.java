@@ -45,8 +45,10 @@ public class LoginService {
        public LoginModel getAdmin(String username)
        {
            List<LoginModel> admins= listInventory();
+
            for (LoginModel admin : admins) {
                if (admin.getUserName().equals(username)) {
+
                    return admin;
                }
            }
