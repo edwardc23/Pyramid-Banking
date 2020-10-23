@@ -30,7 +30,7 @@ public class SavingsController {
         if(savingsModel.getAccountNumber().equals("Yes")){
 
             savingsModel.setAccountNumber(list.getSaving());
-
+            savingsModel.setName(list.getFull());
         }
         return this.savingsService.save(savingsModel);
     }

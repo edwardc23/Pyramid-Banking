@@ -7,24 +7,24 @@ public class LoginModel {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name="ID")
+        @Column(name="id")
         private int id;
 
-        @Column(name="Username")
+        @Column(name="user_name")
         private String userName;
 
-        @Column(name="Password")
+        @Column(name="password")
         private String password;
 
-        @Column(name="FullName")
+        @Column(name="full_name")
         private String full;
 
 
-        @Column(name="Saving")
+        @Column(name="saving")
         private String saving;
 
 
-        @Column(name="Checking")
+        @Column(name="checking")
         private String checking;
 
         public LoginModel(String userName, String password, String full, String saving, String checking) {

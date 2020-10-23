@@ -12,7 +12,7 @@ import java.util.Random;
 @Service
 public class LoginService {
 
-        private final LoginRepository  loginRepository;
+        private  LoginRepository  loginRepository;
 
         private Random rand;
 
@@ -76,13 +76,13 @@ public class LoginService {
 
         public boolean checkForUsername(String username){
             List<LoginModel> list = listInventory();
-
+            if(list.size()!=0){
             for(LoginModel a :list)
             {
                 if(a.getUserName().equals(username)){
                         return true;
                 }
-            }
+            }}
             return false;
         }
 

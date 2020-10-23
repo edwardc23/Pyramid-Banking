@@ -25,12 +25,12 @@ CREATE TABLE `savings` (
 ) ;
 DROP TABLE IF EXISTS `admininfo`;
 CREATE TABLE admininfo (
-                ID INT AUTO_INCREMENT NOT NULL,
-                Username VARCHAR(1000) NOT NULL,
-                Password VARCHAR(1000) NOT NULL,
-                FullName VARCHAR(1000) NOT NULL,
-                Saving VARCHAR(1000) NOT NULL,
-                Checking VARCHAR(1000) NOT NULL,
+                id INT AUTO_INCREMENT NOT NULL,
+                user_name VARCHAR(1000) NOT NULL,
+                password VARCHAR(1000) NOT NULL,
+                full_name VARCHAR(1000) NOT NULL,
+                saving VARCHAR(1000) NOT NULL,
+                checking VARCHAR(1000) NOT NULL,
 
                 PRIMARY KEY (ID)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
