@@ -4,20 +4,28 @@ import com.example.demo.model.SavingsModel;
 import com.example.demo.service.SavingsService;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Optional;
-
+import java.util.Random;
+@CrossOrigin(origins = {"http://localhost:3000"})
 @RestController
 @RequestMapping("/savings")
 public class SavingsController {
-    private SavingsService savingsService;
+    private final SavingsService savingsService;
 
     public SavingsController(SavingsService savingsService) {
         this.savingsService = savingsService;
     }
 
-    @PostMapping("/create")
+    @PostMapping("/createSavings")
     public SavingsModel createSavings(@RequestBody SavingsModel savingsModel){
+        if(savingsModel.getAccountNumber().equals("Yes")){
+            Random rand = new Random();
+            String acctNum="483382610700"+new DecimalFormat("0000").format(String.valueOf(rand.nextInt(10000)));
+            savingsModel.setAccountNumber(acctNum);
+
+        }
         return this.savingsService.save(savingsModel);
     }
 

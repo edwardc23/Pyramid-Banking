@@ -10,7 +10,7 @@ import java.util.Optional;
 @Service
 public class SavingsService {
 
-    private SavingsRepository savingsRepository;
+    private final SavingsRepository savingsRepository;
 
     public SavingsService(SavingsRepository savingsRepository) {
         this.savingsRepository = savingsRepository;

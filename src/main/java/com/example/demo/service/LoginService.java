@@ -12,7 +12,7 @@ import java.util.Random;
 @Service
 public class LoginService {
 
-        private LoginRepository  loginRepository;
+        private final LoginRepository  loginRepository;
 
         private Random rand;
 

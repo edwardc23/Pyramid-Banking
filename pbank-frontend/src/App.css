@@ -12,7 +12,9 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.App-footer{
+  background-color: #FCB712;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -23,7 +25,17 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.body-page{
+  min-height: 85vh;
+  background-color: #1D1761;
+  height: 100%;
+  width: 100%;
+}
+.register-page{
+  min-height: 85vh;
+  height: 100%;
+  width: 100%;
+}
 .App-link {
   color: #61dafb;
 }

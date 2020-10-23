@@ -1,8 +1,8 @@
 import React, {Component} from'react'
-import FooterComponent from './FooterComponent'
+import FooterComponent from '../general/FooterComponent'
 import WelcomePage from '../admin/WelcomePage'
 import Register from '../admin/Register'
-import Homepage from './Homepage'
+import Homepage from '../general/Homepage'
 
 import Login from '../admin/Login'
 import Logout from '../admin/Logout'

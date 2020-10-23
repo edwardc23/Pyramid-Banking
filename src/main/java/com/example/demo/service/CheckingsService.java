@@ -10,7 +10,7 @@ import java.util.Optional;
 @Service
 public class CheckingsService {
 
-    private CheckingsRepository checkingsRepository;
+    private final CheckingsRepository checkingsRepository;
 
     public CheckingsService(CheckingsRepository checkingsRepository) {
         this.checkingsRepository = checkingsRepository;

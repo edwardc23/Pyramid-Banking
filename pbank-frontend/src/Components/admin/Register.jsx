@@ -7,21 +7,30 @@ class Register extends Component{
             this.state = {
                 username: '',
                 password: '',
-                duplicate: ''
+                savingAcct:'No',
+                checkingAcct:'No',
+                fullName: ''
 
             }
             this.handleUsernameChange = this.handleUsernameChange.bind(this)
             this.handlePasswordChange = this.handlePasswordChange.bind(this)
-            this.handlePasswordDup = this.handlePasswordDup.bind(this)
+            this.handleFull = this.handleFull.bind(this)
+            this.handleSavingsChange = this.handleSavingsChange.bind(this)
+            this.handleCheckingChange = this.handleCheckingChange.bind(this)
             this.handleSubmit = this.handleSubmit.bind(this)
             this.testP = this.testP.bind(this)
+            this.addAccounts = this.addAccounts.bind(this)
         
     }
     testP(user)
     {
+        console.log(user)
             ControllerDataServices.addAdmin(user)
-            this.props.history.push('/Homepage')   
+
+            //this.props.history.push('/Homepage')
     }
+    addAccounts(acct){if(acct.savingAcct==="Yes"){ControllerDataServices.addSaving(acct)}
+        if(acct.checkingAcct==="Yes"){ControllerDataServices.addChecking(acct)}}
     handleUsernameChange(event) {
         this.setState({
             username: event.target.value
@@ -35,36 +44,72 @@ class Register extends Component{
         })
         // console.log(this.state.password)
     }
-    handlePasswordDup(event) {
+    handleSavingsChange(){
+        let check1=''
+        if(this.state.savingAcct==='No'){ check1='Yes'}
+        else{check1='No'}
+        console.log(check1)
         this.setState({
-        duplicate: event.target.value
+        savingAcct: check1
+    })
+    }
+    handleCheckingChange(){
+        let check=''
+        if(this.state.savingAcct==='No'){ check='Yes'}
+        else{check='No'}
+        this.setState({
+        checkingAcct: check
+    })}
+    handleFull(event) {
+        this.setState({
+        fullName: event.target.value
         })
         // console.log(this.state.password)
     }
     handleSubmit(event){
         let user = {
             username: this.state.username,
-            password: this.state.password
+            password: this.state.password,
+            fullName: this.state.fullName,
+            savingAcct: this.state.savingAcct,
+            checkingAcct: this.state.checkingAcct
+
         }
+        let acct = {
+            fullName: this.state.fullName,
+            savingAcct: this.state.savingAcct,
+            checkingAcct: this.state.checkingAcct
+        }
+
         event.preventDefault()
-        if(this.state.password===this.state.duplicate)
-        {this.testP(user)}
+
+        this.testP(user)
+        this.addAccounts(acct)
     }
 render(){
     return(
-        <form onSubmit= {this.handleSubmit}>
-           <p>Username:</p> 
-                <input type="text" value={this.state.username} onChange={this.handleUsernameChange}/>
-                <br></br>
-                <p>New Password:</p>
-                <input type="text"value={this.state.password} onChange={this.handlePasswordChange}/>
-                <br></br>
-                <p>Repeat New Password:</p>
-                <input type="text"value1={this.state.duplicate} onChange={this.handlePasswordDup}/>
-                <br></br><br></br>
-                
-                <button>Submit</button> 
-        </form>
+        <div className={"register-page"}>
+            <form onSubmit= {this.handleSubmit}>
+               <p>Username:</p>
+                    <input type="text" value={this.state.username} onChange={this.handleUsernameChange}/>
+                    <br/>
+                    <p>New Password:</p>
+                    <input type="text" value={this.state.password} onChange={this.handlePasswordChange}/>
+                    <br/>
+                    <p>Full Name:</p>
+                    <input type="text" value={this.state.fullName} onChange={this.handleFull}/>
+                    <br/>
+
+                <input type="checkbox"  id="checkingAcct" value="Yes" onClick={this.handleCheckingChange}/>
+                    <label htmlFor="checking"> Checking Acct</label>
+                    <br/>
+
+                <input type="checkbox" id="savingsAcct" value="Yes" onClick={this.handleSavingsChange} />
+                    <label htmlFor="savings"> Savings Acct</label>
+                    <br/>
+                    <button>Submit</button>
+            </form>
+        </div>
     )
 }
 }export default Register

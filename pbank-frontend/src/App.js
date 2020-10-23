@@ -1,7 +1,7 @@
 import React from 'react';
 import './Bootstrap.css';
 import './App.css';
-import RouterComponent from './Components/general/RouterComponent';
+import RouterComponent from './Components/Router/RouterComponent';
 
 function App() {
   return (

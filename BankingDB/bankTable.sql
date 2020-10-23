@@ -14,5 +14,9 @@ CREATE TABLE admininfo (
                 ID INT AUTO_INCREMENT NOT NULL,
                 Username VARCHAR(1000) NOT NULL,
                 Password VARCHAR(1000) NOT NULL,
+                FullName VARCHAR(1000) NOT NULL,
+                Saving VARCHAR(1000) NOT NULL,
+                Checking VARCHAR(1000) NOT NULL,
+
                 PRIMARY KEY (ID)
 )ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;

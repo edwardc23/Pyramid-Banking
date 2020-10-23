@@ -2,18 +2,20 @@ package com.example.demo.model;
 
 import com.example.demo.repository.Account;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name="checking")
 public class CheckingsModel implements Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
     private long id;
+    @Column(name="AcctNumber")
     private String accountNumber;
+    @Column(name="FullName")
     private String name;
+    @Column(name="Balance")
     private double balance;
 
     public CheckingsModel() {
