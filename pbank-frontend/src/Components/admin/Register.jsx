@@ -85,6 +85,7 @@ class Register extends Component{
 
         this.testP(user)
         this.addAccounts(acct)
+        this.props.history.push('/Homepage')
     }
 render(){
     return(
