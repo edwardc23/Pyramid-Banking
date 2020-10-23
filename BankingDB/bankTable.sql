@@ -6,9 +6,9 @@ USE `bankDB`;
 DROP TABLE IF EXISTS `checking`;
 CREATE TABLE `checking` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-	AcctNumber VARCHAR(16) NOT NULL,
-    FullName VARCHAR(100) NOT NULL,
-    Balance VARCHAR(30) NOT NULL,
+	acct_number VARCHAR(16) NOT NULL,
+    full_name VARCHAR(100) NOT NULL,
+    balance VARCHAR(30) NOT NULL,
     
   
   PRIMARY KEY (`id`)
@@ -16,9 +16,9 @@ CREATE TABLE `checking` (
 DROP TABLE IF EXISTS `savings`;
 CREATE TABLE `savings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-	AcctNumber VARCHAR(16) NOT NULL,
-    FullName VARCHAR(100) NOT NULL,
-    Balance VARCHAR(30) NOT NULL,
+	acct_number VARCHAR(16) NOT NULL,
+    full_name VARCHAR(100) NOT NULL,
+    balance VARCHAR(30) NOT NULL,
     
   
   PRIMARY KEY (`id`)

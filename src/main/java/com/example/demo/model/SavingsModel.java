@@ -12,11 +12,11 @@ public class SavingsModel implements Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Column(name="AcctNumber")
+    @Column(name="acct_number")
     private String accountNumber;
-    @Column(name="FullName")
+    @Column(name="full_name")
     private String name;
-    @Column(name="Balance")
+    @Column(name="balance")
     private double balance;
 
     public SavingsModel() {
