@@ -41,6 +41,17 @@ public class LoginService {
             return loginRepository.getOne(id);
 
         }
+       @Transactional
+       public LoginModel getAdmin(String username)
+       {
+           List<LoginModel> admins= listInventory();
+           for (LoginModel admin : admins) {
+               if (admin.getUserName().equals(username)) {
+                   return admin;
+               }
+           }
+          return null;
+       }
 
 
         @Transactional

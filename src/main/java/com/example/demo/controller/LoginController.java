@@ -57,5 +57,11 @@ public class LoginController {
 
 
     }
+    @GetMapping("/returnUser")
+    public LoginModel returnUser(@RequestBody String username)
+    {
+        return loginService.getAdmin(username);
+
+    }
 
 }

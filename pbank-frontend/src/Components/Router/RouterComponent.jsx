@@ -25,7 +25,7 @@ class RouterComponent extends Component{
                         </Switch>
 
                     <FooterComponent />
-                </Router>
+                </Router>p
             </div>
         )
     }
