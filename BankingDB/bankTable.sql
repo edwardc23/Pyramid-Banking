@@ -1,15 +1,29 @@
-CREATE DATABASE  IF NOT EXISTS `Entries`;
-USE `Entries`;
+CREATE DATABASE  IF NOT EXISTS `bankDB`;
+USE `bankDB`;
 --
 -- Table structure for table `student`
 --
-DROP TABLE IF EXISTS `entry`;
-CREATE TABLE `entry` (
+DROP TABLE IF EXISTS `checking`;
+CREATE TABLE `checking` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
- 
+	AcctNumber VARCHAR(16) NOT NULL,
+    FullName VARCHAR(100) NOT NULL,
+    Balance VARCHAR(30) NOT NULL,
+    
   
   PRIMARY KEY (`id`)
 ) ;
+DROP TABLE IF EXISTS `savings`;
+CREATE TABLE `savings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+	AcctNumber VARCHAR(16) NOT NULL,
+    FullName VARCHAR(100) NOT NULL,
+    Balance VARCHAR(30) NOT NULL,
+    
+  
+  PRIMARY KEY (`id`)
+) ;
+DROP TABLE IF EXISTS `admininfo`;
 CREATE TABLE admininfo (
                 ID INT AUTO_INCREMENT NOT NULL,
                 Username VARCHAR(1000) NOT NULL,
