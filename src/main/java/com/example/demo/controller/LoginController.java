@@ -62,6 +62,10 @@ public class LoginController {
     @PostMapping("/returnUser")
     public LoginModel returnUser(@RequestBody String username)
     {
+        System.out.println(username.length());
+        username = username.substring(13,username.length()-2);
+        System.out.println(username);
+
 
         return loginService.getAdmin(username);
 
