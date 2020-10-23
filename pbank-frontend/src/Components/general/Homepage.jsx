@@ -6,10 +6,18 @@ class Homepage extends Component{
         super(props);
         this.state = {
 
-            username: this.props.match.params.username,
+            username: this.props.match.params.username
 
         }
     }
+
+    findByUsername = (username) =>{
+
+    }
+
+
+
+
 
     render() {
 
