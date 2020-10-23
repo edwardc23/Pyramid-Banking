@@ -28,7 +28,7 @@ class Register extends Component{
         ControllerDataServices.addAdmin(user)
         this.addAccounts(acct)
 
-        //this.props.history.push(`/Homepage/${this.state.username}`)
+        this.props.history.push(`/Homepage/${this.state.username}`)
     }
     addAccounts(acct){if(acct.savingAcct==="Yes"){ControllerDataServices.addSaving(acct)}
         if(acct.checkingAcct==="Yes"){ControllerDataServices.addChecking(acct)}}

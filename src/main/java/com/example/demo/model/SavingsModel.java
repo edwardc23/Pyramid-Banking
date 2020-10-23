@@ -10,7 +10,7 @@ public class SavingsModel implements Account {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name="acct_number")
     private String accountNumber;

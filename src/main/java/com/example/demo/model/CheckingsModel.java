@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name="checking")
 public class CheckingsModel implements Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name="AcctNumber")
