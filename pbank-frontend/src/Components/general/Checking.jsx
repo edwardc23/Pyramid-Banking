@@ -23,8 +23,10 @@ class Checking extends Component{
 
 
     componentDidMount() {
+        setTimeout(()=>{
             this.findByChecking(this.props.checking);
             this.findBySaving(this.props.saving);
+        },200)
 
 
 
@@ -32,12 +34,12 @@ class Checking extends Component{
 
 
      findByChecking = (checkingAcct)=> {
-         console.log(checkingAcct)
+
          axios.post("http://localhost:8080/checkings/find", {checkingAcct}).then(res=> {
-            // console.log("res: " + JSON.stringify(res));
+            console.log("res: " + JSON.stringify(res.data));
             return this.setState({checking :{
                     accountNumber: res.data['accountNumber'],
-                    balance: res.data[''],
+                    balance: res.data['balance'],
                     name: res.data['']
                 }
 
@@ -56,9 +58,10 @@ class Checking extends Component{
 
             <div className>
                 <div className={"body-page"}>
-                    <br/>
-                    <h2 style={{color:"white"}}>Checking: {this.props.checking}</h2>
+                    <br />
+                    <h2 style={{color:"white"}}>Checking</h2>
                     <h2 style={{color:"white"}}>ACCT: {this.state.checking.accountNumber}</h2>
+                    <h2 style={{color:"white"}}>Balance: {this.state.checking.balance}</h2>
 
                 </div>
             </div>

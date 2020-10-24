@@ -58,9 +58,7 @@ public class LoginService {
         @Transactional
         public boolean checkAdmin(LoginModel admin) {
 
-
             List<LoginModel> list = listInventory();
-
             for(LoginModel a :list)
             {
 
