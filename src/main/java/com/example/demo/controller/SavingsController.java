@@ -67,4 +67,12 @@ public class SavingsController {
         else
             return "Account not deleted.";
     }
+
+    @PostMapping("/find")
+    public SavingsModel findByAccountNumber(@RequestBody String accountNumber){
+        System.out.println("og saving: " + accountNumber);
+        accountNumber = accountNumber.substring(15,accountNumber.length()-2);
+        System.out.println("sub sav: " + accountNumber);
+        return savingsService.findByAccountNumber(accountNumber);
+    }
 }

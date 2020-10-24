@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import HeaderComponent from './HeaderComponent'
 import axios from "axios";
 import Checking from "./Checking";
+import Saving from "./Saving";
 
 class Homepage extends Component{
     constructor(props) {
@@ -34,11 +35,6 @@ class Homepage extends Component{
 
      componentDidMount() {
          this.findByUsername(this.state.username);
-        // setTimeout(()=> {
-        //      this.findByChecking(this.state.user.checking);
-        //      this.findBySaving(this.state.user.saving);
-        //
-        // },500);
 
     }
 
@@ -57,31 +53,10 @@ class Homepage extends Component{
 
     }
 
-     findByChecking(checking) {
-         axios.post("http://localhost:8080/checkings/find", {checking}).then(res=> {
-            console.log("res: " + res.data);
-            return this.setState({checking :{
-                    accountNumber: res.data['accountNumber'],
-                    balance: res.data[''],
-                    name: res.data['']
-                }
-
-            })
-        })
-    }
-
-    findBySaving = () =>{
-
-    }
-
-
-
 
 
     render() {
-
         return(
-
             <div className>
                 <HeaderComponent/>
                 <div className={"body-page"}>
@@ -89,8 +64,8 @@ class Homepage extends Component{
                     <h2 style={{color: "white"}}>User: {this.state.user.userName}</h2>
                     <h2 style={{color: "white"}}>Checking: {this.state.user.checking}</h2>
                     <h2 style={{color: "white"}}>Saving: {this.state.user.saving}</h2>
-                    <br/>
-                    <Checking saving={this.state.user.saving} checking={this.state.user.checking} />
+                    <Checking checking={this.state.user.checking} />
+                    <Saving saving={this.state.user.saving} />
 
                 </div>
             </div>

@@ -41,4 +41,8 @@ public class SavingsService {
     public void delete(Long id) {
         savingsRepository.deleteById(id);
     }
+
+    public SavingsModel findByAccountNumber(String accountNumber){
+        return savingsRepository.findByAccountNumber(accountNumber);
+    }
 }
