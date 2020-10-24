@@ -70,9 +70,9 @@ public class CheckingsController {
 
     @PostMapping("/find")
     public CheckingsModel findByAccountNumber(@RequestBody String accountNumber){
-        System.out.println(accountNumber);
-        accountNumber = accountNumber.substring(13,accountNumber.length()-2);
-        System.out.println(accountNumber);
+        System.out.println("og check: " + accountNumber);
+        accountNumber = accountNumber.substring(17,accountNumber.length()-2);
+        System.out.println("sub check: " + accountNumber);
         return checkingsService.findByAccountNumber(accountNumber);
     }
 }

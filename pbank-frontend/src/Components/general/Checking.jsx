@@ -11,43 +11,48 @@ class Checking extends Component{
                 accountNumber: '',
                 balance: 0,
                 name: ''
-            },
-            saving : {
-                accountNumber: '',
-                balance: 0,
-                name: ''
             }
         }
 
     }
 
 
-    componentDidMount() {
+    async componentDidMount() {
+        setTimeout(()=>{
             this.findByChecking(this.props.checking);
-            this.findBySaving(this.props.saving);
 
+        },200)
 
 
     }
 
 
      findByChecking = (checkingAcct)=> {
-         console.log(checkingAcct)
+
          axios.post("http://localhost:8080/checkings/find", {checkingAcct}).then(res=> {
-            // console.log("res: " + JSON.stringify(res));
+            console.log("res: " + JSON.stringify(res.data));
             return this.setState({checking :{
                     accountNumber: res.data['accountNumber'],
-                    balance: res.data[''],
+                    balance: res.data['balance'],
                     name: res.data['']
                 }
 
             })
         })
     }
-
-    findBySaving = () =>{
-
-    }
+    //
+    // findBySaving = (savingAcct) =>{
+    //     axios.post("http://localhost:8080/savings/find", {savingAcct}).then(res=> {
+    //         console.log("res: " + JSON.stringify(res.data));
+    //         return this.setState({saving :{
+    //                 accountNumber: res.data['accountNumber'],
+    //                 balance: res.data['balance'],
+    //                 name: res.data['']
+    //             }
+    //
+    //         })
+    //     })
+    // }
 
 
     render(){
@@ -56,10 +61,15 @@ class Checking extends Component{
 
             <div className>
                 <div className={"body-page"}>
-                    <br/>
-                    <h2 style={{color:"white"}}>Checking: {this.props.checking}</h2>
+                    <br />
+                    <h2 style={{color:"white"}}>Checking</h2>
                     <h2 style={{color:"white"}}>ACCT: {this.state.checking.accountNumber}</h2>
+                    <h2 style={{color:"white"}}>Balance: {this.state.checking.balance}</h2>
 
+                    {/*<br />*/}
+                    {/*<h2 style={{color:"white"}}>Saving</h2>*/}
+                    {/*<h2 style={{color:"white"}}>ACCT: {this.state.saving.accountNumber}</h2>*/}
+                    {/*<h2 style={{color:"white"}}>Balance: {this.state.saving.balance}</h2>*/}
                 </div>
             </div>
         )}
