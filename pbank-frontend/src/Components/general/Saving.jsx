@@ -17,7 +17,7 @@ class Saving extends Component{
     }
 
 
-    async componentDidMount() {
+     componentDidMount() {
         setTimeout(()=>{
             this.findBySaving(this.props.saving);
         },200)
@@ -29,6 +29,7 @@ class Saving extends Component{
     findBySaving = (savingAcct) =>{
         axios.post("http://localhost:8080/savings/find", {savingAcct}).then(res=> {
             console.log("saving res: " + JSON.stringify(res.data));
+            console.log(savingAcct)
             return this.setState({saving :{
                     accountNumber: res.data['accountNumber'],
                     balance: res.data['balance'],

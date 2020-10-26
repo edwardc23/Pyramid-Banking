@@ -10,7 +10,7 @@ public class SavingsModel implements Account {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name="acct_number")
     private String accountNumber;
@@ -75,5 +75,15 @@ public class SavingsModel implements Account {
     @Override
     public String accountType() {
         return "Savings";
+    }
+
+    @Override
+    public String toString() {
+        return "SavingsModel{" +
+                "id=" + id +
+                ", accountNumber='" + accountNumber + '\'' +
+                ", name='" + name + '\'' +
+                ", balance=" + balance +
+                '}';
     }
 }

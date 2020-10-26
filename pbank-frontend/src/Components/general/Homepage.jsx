@@ -36,6 +36,7 @@ class Homepage extends Component{
      componentDidMount() {
          this.findByUsername(this.state.username);
 
+
     }
 
 
@@ -56,6 +57,7 @@ class Homepage extends Component{
 
 
     render() {
+        const check=this.state.user.checking
         return(
             <div className>
                 <HeaderComponent/>
@@ -64,8 +66,8 @@ class Homepage extends Component{
                     <h2 style={{color: "white"}}>User: {this.state.user.userName}</h2>
                     <h2 style={{color: "white"}}>Checking: {this.state.user.checking}</h2>
                     <h2 style={{color: "white"}}>Saving: {this.state.user.saving}</h2>
-                    <Checking checking={this.state.user.checking} />
-                    <Saving saving={this.state.user.saving} />
+                    <Checking checking= {this.state.user.checking} />
+                    <Saving saving= {this.state.user.saving} />
 
                 </div>
             </div>

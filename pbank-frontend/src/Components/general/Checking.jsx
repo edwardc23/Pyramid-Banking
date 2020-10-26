@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
-import HeaderComponent from './HeaderComponent'
+
 import axios from "axios";
+
 
 class Checking extends Component{
     constructor(props) {
@@ -14,19 +15,26 @@ class Checking extends Component{
             }
         }
 
+
     }
 
 
-    async componentDidMount() {
+     componentDidMount() {
+        console.log(this.props.checking)
         setTimeout(()=>{
-            this.findByChecking(this.props.checking);
+            this.findByChecking(this.props.checking)
 
-        },200)
+
+        },500)
 
 
     }
 
+    //
+    findChecking(account)
+    {
 
+    }
      findByChecking = (checkingAcct)=> {
 
          axios.post("http://localhost:8080/checkings/find", {checkingAcct}).then(res=> {
@@ -57,10 +65,12 @@ class Checking extends Component{
 
     render(){
 
+
         return(
 
             <div className>
                 <div className={"body-page"}>
+
                     <br />
                     <h2 style={{color:"white"}}>Checking</h2>
                     <h2 style={{color:"white"}}>ACCT: {this.state.checking.accountNumber}</h2>

@@ -30,12 +30,13 @@ class ControllerDataServices {
         });
     }
     addChecking(acct){
-        axios.post(`http://localhost:8080/checkings/create`,{
-          accountNumber: acct.checkingAcct,
-          name: acct.fullName,
-          balance: 0
+        axios.post(`http://localhost:8080/checkings/create`, {
+            accountNumber: acct.checkingAcct,
+            name: acct.fullName,
+            balance: 0
         })
     }
+
     addSaving(acct){
         axios.post(`http://localhost:8080/savings/create`,{
           accountNumber: acct.savingAcct,
