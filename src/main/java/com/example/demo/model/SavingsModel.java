@@ -76,4 +76,14 @@ public class SavingsModel implements Account {
     public String accountType() {
         return "Savings";
     }
+
+    @Override
+    public String toString() {
+        return "SavingsModel{" +
+                "id=" + id +
+                ", accountNumber='" + accountNumber + '\'' +
+                ", name='" + name + '\'' +
+                ", balance=" + balance +
+                '}';
+    }
 }

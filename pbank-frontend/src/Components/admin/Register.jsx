@@ -22,16 +22,24 @@ class Register extends Component{
         this.addAccounts = this.addAccounts.bind(this)
 
     }
-    testP(user,acct)
+    testP(user)
     {
         console.log(user)
         ControllerDataServices.addAdmin(user)
-        this.addAccounts(acct)
+        this.addAccounts(user)
+
 
         this.props.history.push(`/Homepage/${this.state.username}`)
     }
-    addAccounts(acct){if(acct.savingAcct==="Yes"){ControllerDataServices.addSaving(acct)}
-        if(acct.checkingAcct==="Yes"){ControllerDataServices.addChecking(acct)}}
+    addAccounts(user){
+        if(user.savingAcct==="Yes"){
+        ControllerDataServices.addSaving(user)
+        }
+        if(user.checkingAcct==="Yes")
+        {
+            ControllerDataServices.addChecking(user)
+        }
+        }
     handleUsernameChange(event) {
         this.setState({
             username: event.target.value
@@ -46,12 +54,12 @@ class Register extends Component{
         // console.log(this.state.password)
     }
     handleSavingsChange(){
-        let check1=''
-        if(this.state.savingAcct==='No'){ check1='Yes'}
-        else{check1='No'}
-        console.log(check1)
+        let save=''
+        if(this.state.savingAcct==='No'){ save='Yes'}
+        else{save='No'}
+        console.log(save)
         this.setState({
-            savingAcct: check1
+            savingAcct: save
         })
     }
     handleCheckingChange(){
@@ -76,15 +84,11 @@ class Register extends Component{
             checkingAcct: this.state.checkingAcct
 
         }
-        let acct = {
-            fullName: this.state.fullName,
-            savingAcct: this.state.savingAcct,
-            checkingAcct: this.state.checkingAcct
-        }
+
 
         event.preventDefault()
 
-        this.testP(user,acct)
+        this.testP(user)
 
     }
     render(){

@@ -25,7 +25,7 @@ public class CheckingsController {
     public CheckingsModel createCheckings(@RequestBody CheckingsModel checkingsModel) throws InterruptedException {
         Thread.sleep(5000);
         LoginModel list = loginRepository.findAll().get(loginRepository.findAll().size()-1);
-
+        System.out.println(list.toString());
 
         if(checkingsModel.getAccountNumber().equals("Yes")){
 
@@ -70,6 +70,7 @@ public class CheckingsController {
 
     @PostMapping("/find")
     public CheckingsModel findByAccountNumber(@RequestBody String accountNumber){
+        System.out.println(accountNumber);
         System.out.println("og check: " + accountNumber);
         accountNumber = accountNumber.substring(17,accountNumber.length()-2);
         System.out.println("sub check: " + accountNumber);

@@ -42,7 +42,15 @@ public class SavingsService {
         savingsRepository.deleteById(id);
     }
 
-    public SavingsModel findByAccountNumber(String accountNumber){
-        return savingsRepository.findByAccountNumber(accountNumber);
+    public SavingsModel findByAcctNumber(String accountNumber){
+        List<SavingsModel> a= savingsRepository.findAll();
+        for(SavingsModel t:a)
+        {
+            if(accountNumber.equals(t.getAccountNumber()))
+            {
+                return t;
+            }
+        }
+        return null;
     }
 }

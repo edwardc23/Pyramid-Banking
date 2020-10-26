@@ -73,6 +73,8 @@ public class SavingsController {
         System.out.println("og saving: " + accountNumber);
         accountNumber = accountNumber.substring(15,accountNumber.length()-2);
         System.out.println("sub sav: " + accountNumber);
-        return savingsService.findByAccountNumber(accountNumber);
+SavingsModel test = savingsService.findByAcctNumber(accountNumber);
+        System.out.println(test.toString());
+        return test;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.model.CheckingsModel;
+import com.example.demo.model.SavingsModel;
 import com.example.demo.repository.CheckingsRepository;
 import org.springframework.stereotype.Service;
 
@@ -44,7 +45,14 @@ public class CheckingsService {
     }
 
     public CheckingsModel findByAccountNumber(String accountNumber){
-
-        return checkingsRepository.findByAccountNumber(accountNumber);
+        List<CheckingsModel> a= checkingsRepository.findAll();
+        for(CheckingsModel t:a)
+        {
+            if(accountNumber.equals(t.getAccountNumber()))
+            {
+                return t;
+            }
+        }
+        return null;
     }
 }
