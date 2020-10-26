@@ -40,6 +40,25 @@ public class CheckingsService {
 
     }
 
+    public CheckingsModel withdrawChecking(Long id, double amt) {
+
+        Optional<CheckingsModel> checkingsModel = checkingsRepository.findById(id);
+        checkingsModel.get().withdraw(amt);
+
+        return checkingsRepository.save(checkingsModel.get());
+
+    }
+
+    public CheckingsModel depositChecking(Long id, double amt) {
+
+        System.out.println(amt);
+        Optional<CheckingsModel> checkingsModel = checkingsRepository.findById(id);
+        checkingsModel.get().deposit(amt);
+
+        return checkingsRepository.save(checkingsModel.get());
+
+    }
+
     public void delete(Long id) {
         checkingsRepository.deleteById(id);
     }
