@@ -10,7 +10,7 @@ class Checking extends Component{
 
             checking: {
                 id: '',
-                accountNumber: '',
+                accountNumber: this.props.location.checking.accountNumber,
                 balance: 0,
                 name: ''
             },
