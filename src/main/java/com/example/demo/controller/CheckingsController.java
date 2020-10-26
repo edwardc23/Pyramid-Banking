@@ -76,4 +76,20 @@ public class CheckingsController {
         System.out.println("sub check: " + accountNumber);
         return checkingsService.findByAccountNumber(accountNumber);
     }
+
+    @PostMapping("/withdraw/{id}")
+    public CheckingsModel withdraw(@PathVariable Long id, @RequestBody String amt){
+
+        double withAmt = Double.parseDouble(amt.substring(8,amt.length()-2));
+
+        return checkingsService.withdrawChecking(id, withAmt);
+    }
+
+    @PostMapping("/deposit/{id}")
+    public CheckingsModel deposit(@PathVariable Long id, @RequestBody String amt){
+
+        double depAmt = Double.parseDouble(amt.substring(8,amt.length()-2));
+
+        return checkingsService.depositChecking(id,depAmt);
+    }
 }

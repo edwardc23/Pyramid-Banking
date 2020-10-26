@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import com.example.demo.repository.Account;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 
@@ -54,10 +55,12 @@ public class CheckingsModel implements Account {
         this.name = name;
     }
 
+    @JsonProperty("balance")
     public double getBalance() {
         return balance;
     }
 
+    @JsonProperty("balance")
     public void setBalance(double balance) {
         this.balance = balance;
     }
