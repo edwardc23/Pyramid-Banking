@@ -22,7 +22,7 @@ class RouterComponent extends Component{
                             <Route path="/Login" component={Login}/>
                             <Route path="/Register" component={Register}/>
                             <Route path="/Homepage/:username" component={Homepage}/>
-                            <Route path="/Logout"component={Logout}/>
+                            <Route path="/Logout" component={Logout}/>
                             <Route path="/Checking" component={Checking} />
                         </Switch>
 
