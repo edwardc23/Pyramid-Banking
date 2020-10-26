@@ -8,6 +8,7 @@ import Login from '../admin/Login'
 import Logout from '../admin/Logout'
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Checking from "../general/Checking";
 
 class RouterComponent extends Component{
     render()
@@ -22,6 +23,7 @@ class RouterComponent extends Component{
                             <Route path="/Register" component={Register}/>
                             <Route path="/Homepage/:username" component={Homepage}/>
                             <Route path="/Logout"component={Logout}/>
+                            <Route path="/Checking" component={Checking} />
                         </Switch>
 
                     <FooterComponent />

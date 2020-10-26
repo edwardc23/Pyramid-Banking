@@ -64,7 +64,12 @@ class Homepage extends Component{
                 <div className={"body-page"}>
                     <h2 style={{color: "white"}}>Name: {this.state.user.full}</h2>
                     <h2 style={{color: "white"}}>User: {this.state.user.userName}</h2>
-                    <h2 style={{color: "white"}}>Checking: {this.state.user.checking}</h2>
+                    <button>
+                        <a href="/Checking" checking={this.state.user.checking} > Checking</a>
+                    </button>
+
+
+
                     <h2 style={{color: "white"}}>Saving: {this.state.user.saving}</h2>
                     <Checking checking= {this.state.user.checking} />
                     <Saving saving= {this.state.user.saving} />
