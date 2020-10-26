@@ -9,6 +9,7 @@ import Logout from '../admin/Logout'
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Checking from "../general/Checking";
+import Saving from "../general/Saving";
 
 class RouterComponent extends Component{
     render()
@@ -24,6 +25,7 @@ class RouterComponent extends Component{
                             <Route path="/Homepage/:username" component={Homepage}/>
                             <Route path="/Logout" component={Logout}/>
                             <Route path="/Checking" component={Checking} />
+                            <Route path="/Saving" component={Saving} />
                         </Switch>
 
                     <FooterComponent />

@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.CheckingsModel;
 import com.example.demo.model.LoginModel;
 import com.example.demo.model.SavingsModel;
 import com.example.demo.repository.LoginRepository;
@@ -14,7 +15,7 @@ import java.util.Optional;
 public class SavingsController {
 
     private final SavingsService savingsService;
-    private LoginRepository loginRepository;
+    private final LoginRepository loginRepository;
 
     public SavingsController(SavingsService savingsService, LoginRepository loginRepository) {
         this.savingsService = savingsService;
@@ -76,5 +77,21 @@ public class SavingsController {
 SavingsModel test = savingsService.findByAcctNumber(accountNumber);
         System.out.println(test.toString());
         return test;
+    }
+    @PostMapping("/withdraw/{id}")
+    public SavingsModel withdraw(@PathVariable Long id, @RequestBody String amt){
+
+        double withAmt = Double.parseDouble(amt.substring(8,amt.length()-2));
+
+        return savingsService.withdrawChecking(id, withAmt);
+    }
+
+    @PostMapping("/deposit/{id}")
+    public SavingsModel deposit(@PathVariable Long id, @RequestBody String amt){
+
+        System.out.println(amt);
+        double depAmt = Double.parseDouble(amt.substring(8,amt.length()-2));
+        System.out.println(depAmt);
+        return savingsService.depositChecking(id,depAmt);
     }
 }

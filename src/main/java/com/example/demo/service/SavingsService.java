@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.model.CheckingsModel;
 import com.example.demo.model.SavingsModel;
 import com.example.demo.repository.SavingsRepository;
 import org.springframework.stereotype.Service;
@@ -52,5 +53,23 @@ public class SavingsService {
             }
         }
         return null;
+    }
+    public SavingsModel withdrawChecking(Long id, double amt) {
+
+        Optional<SavingsModel> checkingsModel = savingsRepository.findById(id);
+        checkingsModel.get().withdraw(amt);
+
+        return savingsRepository.save(checkingsModel.get());
+
+    }
+
+    public SavingsModel depositChecking(Long id, double amt) {
+
+        System.out.println(amt);
+        Optional<SavingsModel> checkingsModel = savingsRepository.findById(id);
+        checkingsModel.get().deposit(amt);
+
+        return savingsRepository.save(checkingsModel.get());
+
     }
 }
