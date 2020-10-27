@@ -5,6 +5,7 @@ import Checking from "./Checking";
 import Saving from "./Saving";
 import {Link} from "react-router-dom";
 
+
 class Homepage extends Component{
     constructor(props) {
         super(props);
@@ -58,27 +59,22 @@ class Homepage extends Component{
 
 
     render() {
-        const check=this.state.user.checking
+
         return(
             <div className>
                 <HeaderComponent/>
                 <div className={"body-page"}>
                     <h2 style={{color: "white"}}>Name: {this.state.user.full}</h2>
                     <h2 style={{color: "white"}}>User: {this.state.user.userName}</h2>
-                    {/*<button>*/}
-                    {/*    <a href="/Checking" checking={this.state.user.checking} > Checking</a>*/}
-                    {/*</button>*/}
+
+                    <button style={{width:"250px",height:"200px"}}>
+                        <Link to={{ pathname: '/Checking', state: {checking: this.state.user.checking}  }}>Checking</Link>
+                    </button>
+                    <button style={{width:"250px",height:"200px"}}>
+                        <Link to={{ pathname: '/Saving', state: {saving: this.state.user.saving} }}>Saving</Link>
+                    </button>
 
 
-                    {/*<button><Link to={{*/}
-                    {/*    pathname: "/Checking",*/}
-                    {/*    state: this.state.checking*/}
-                    {/*}}>Checking</Link></button>*/}
-
-                    <h2 style={{color: "white"}}>Checking: {this.state.user.checking}</h2>
-                    <h2 style={{color: "white"}}>Saving: {this.state.user.saving}</h2>
-                    <Checking checking= {this.state.user.checking} />
-                    <Saving saving= {this.state.user.saving} />
 
                 </div>
             </div>

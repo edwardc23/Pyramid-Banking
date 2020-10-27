@@ -4,25 +4,7 @@ import React from 'react'
 function HeaderComponent(){
     return(
         <div>
-            <nav className="navbar navbar-expand-md " style={{backgroundColor:"whitesmoke"}}>
- 
-  <a className="navbar-brand" href="/Homepage">Pyramid Banking</a>
-
-
-  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span className="navbar-toggler-icon"></span>
-  </button>
-
-  <div className="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul className="navbar-nav">
-
-      <li className="nav-item">
-        <a className="nav-link" href="/Logout">Logout</a>
-      </li>
-     
-    </ul>
-  </div>
-</nav>
+            <h1>P&emsp; Y&emsp; R&emsp; A&emsp; M&emsp; I&emsp; D       &emsp;&emsp;&emsp;&emsp;      B&emsp; A&emsp; N&emsp; K&emsp; I&emsp; N&emsp; G</h1>
         </div>
     )
 }

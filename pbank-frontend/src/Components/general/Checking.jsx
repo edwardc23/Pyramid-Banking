@@ -10,7 +10,7 @@ class Checking extends Component{
 
             checking: {
                 id: '',
-                accountNumber: '',
+                accountNumber: this.props.location.state.checking,
                 balance: 0,
                 name: ''
             },
@@ -23,12 +23,12 @@ class Checking extends Component{
 
 
      componentDidMount() {
-        console.log(this.props.checking)
-        setTimeout(()=>{
-            this.findByChecking(this.props.checking)
+         console.log(this.state.checking.accountNumber)
+        // setTimeout(()=>{
+            this.findByChecking(this.state.checking.accountNumber)
 
 
-        },500)
+        // },5000)
 
 
     }
