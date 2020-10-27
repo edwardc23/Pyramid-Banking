@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-
 import axios from "axios";
 
 
@@ -124,7 +123,10 @@ class Checking extends Component{
                     <br />
                     <h2 style={{color:"white"}}>Checking</h2>
                     <h2 style={{color:"white"}}>ACCT: {this.state.checking.accountNumber}</h2>
-                    <h2 style={{color:"white"}}>Balance: {this.state.checking.balance}</h2>
+                    <h2 style={{color:"white"}}>Balance: {new Intl.NumberFormat("en", {
+                        style: "currency",
+                        currency: "USD"
+                    }).format(this.state.checking.balance)}</h2>
                     <form>
                         <input type="number"
                                onChange={this.handleWithChange}

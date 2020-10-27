@@ -98,7 +98,10 @@ class Saving extends Component{
                 <div className={"body-page"}>
                     <h2 style={{color:"white"}}>Saving</h2>
                     <h2 style={{color:"white"}}>ACCT: {this.state.saving.accountNumber}</h2>
-                    <h2 style={{color:"white"}}>Balance: {this.state.saving.balance}</h2>
+                    <h2 style={{color:"white"}}>Balance: {new Intl.NumberFormat("en", {
+                        style: "currency",
+                        currency: "USD"
+                    }).format(this.state.saving.balance)}</h2>
 
                     <form>
                         <input type="number"
