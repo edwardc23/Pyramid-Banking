@@ -1,5 +1,6 @@
 import React from 'react'
 import { Component } from "react"
+import Pyramid from '../../Resources/Pyramid.jpg'
 import ControllerDataServices from '../../services-HTTP/ControllerDataServices'
 class Login extends Component{
     constructor(props){
@@ -58,16 +59,19 @@ class Login extends Component{
     }
     render(){
         return(
+            <div className={"login-page"}>
             <form onSubmit={this.handleSubmit}>
                 <p>Username:</p>
                 <input type="text" className="text-input" value={this.state.username} onChange={this.handleUsernameChange}/>
                 <p>Password:</p>
                 <input type="text" className="text-input" value={this.state.password} onChange={this.handlePasswordChange}/>
-                <br></br>
+                <br/>
                 <button className='btn btn-link'>Submit</button>
                 
             </form>
-            
+                <img src={Pyramid} alt={"pyramid"} style={{height:500,width:500}}/>
+
+    </div>
         );
     }
     

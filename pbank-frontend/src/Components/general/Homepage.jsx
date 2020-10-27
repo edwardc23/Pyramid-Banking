@@ -67,22 +67,14 @@ class Homepage extends Component{
                     <h2 style={{color: "white"}}>Name: {this.state.user.full}</h2>
                     <h2 style={{color: "white"}}>User: {this.state.user.userName}</h2>
 
-                    <button>
+                    <button style={{width:"250px",height:"200px"}}>
                         <Link to={{ pathname: '/Checking', state: {checking: this.state.user.checking}  }}>Checking</Link>
                     </button>
-                    <button>
+                    <button style={{width:"250px",height:"200px"}}>
                         <Link to={{ pathname: '/Saving', state: {saving: this.state.user.saving} }}>Saving</Link>
                     </button>
 
 
-                    {/*<button><Link to={{*/}
-                    {/*    pathname: "/Checking",*/}
-                    {/*    state: this.state.checking*/}
-                    {/*}}>Checking</Link></button>*/}
-
-
-                    {/*<Checking checking= {this.state.user.checking} />*/}
-                    {/*<Saving saving= {this.state.user.saving} />*/}
 
                 </div>
             </div>
