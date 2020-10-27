@@ -66,15 +66,20 @@ class Homepage extends Component{
                 <div className={"body-page"}>
                     <h2 style={{color: "white"}}>Name: {this.state.user.full}</h2>
                     <h2 style={{color: "white"}}>User: {this.state.user.userName}</h2>
+                      <div>
+                        <container style={{align:"left",float:"left"}}>
+                            <button className={"checking"} >
+                                <Link to={{ pathname: '/Checking', state: {checking: this.state.user.checking}  }}>Checking</Link>
+                            </button>
+                        </container>
 
-                    <button style={{width:"250px",height:"200px"}}>
-                        <Link to={{ pathname: '/Checking', state: {checking: this.state.user.checking}  }}>Checking</Link>
-                    </button>
-                    <button style={{width:"250px",height:"200px"}}>
-                        <Link to={{ pathname: '/Saving', state: {saving: this.state.user.saving} }}>Saving</Link>
-                    </button>
 
-
+                        <container style={{float:"right",align:"left"}}>
+                            <button className={"saving"}>
+                                <Link to={{ pathname: '/Saving', state: {saving: this.state.user.saving} }}>Saving</Link>
+                            </button>
+                        </container>
+                        </div>
 
                 </div>
             </div>
